@@ -1,0 +1,18 @@
+http://localhost:8545
+
+reverse_proxy /eth http://eth:8545 {
+  rewrite /
+}
+
+reverse_proxy /bsc http://bsc:8545 {
+  rewrite /
+}
+
+reverse_proxy /avax http://avax:8545 {
+  rewrite /
+}
+
+reverse_proxy /klay http://klay:8545 {
+  rewrite /
+}
+

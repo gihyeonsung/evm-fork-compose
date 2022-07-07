@@ -1,0 +1,55 @@
+services:
+  reverse-proxy:
+    image: caddy:latest
+    ports:
+      - 8545:8545
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+
+  eth:
+    image: trufflesuite/ganache:latest
+    command:
+      - "--chain.chainId"
+      - "1"
+      - "--chain.networkId"
+      - "1"
+      - "--wallet.accounts"
+      - "${ACCOUNT_PRIVATE_KEY},10000000000000000000000"
+      - "--fork.url"
+      - "${RPC_URL_ETH}"
+
+  bsc:
+    image: trufflesuite/ganache:latest
+    command:
+      - "--chain.chainId"
+      - "56"
+      - "--chain.networkId"
+      - "1"
+      - "--wallet.accounts"
+      - "${ACCOUNT_PRIVATE_KEY},10000000000000000000000"
+      - "--fork.url"
+      - "${RPC_URL_BSC}"
+
+  avax:
+    image: trufflesuite/ganache:latest
+    command:
+      - "--chain.chainId"
+      - "43114"
+      - "--chain.networkId"
+      - "1"
+      - "--wallet.accounts"
+      - "${ACCOUNT_PRIVATE_KEY},10000000000000000000000"
+      - "--fork.url"
+      - "${RPC_URL_AVAX}"
+
+  klay:
+    image: trufflesuite/ganache:latest
+    command:
+      - "--chain.chainId"
+      - "8217"
+      - "--chain.networkId"
+      - "8217"
+      - "--wallet.accounts"
+      - "${ACCOUNT_PRIVATE_KEY},10000000000000000000000"
+      - "--fork.url"
+      - "${RPC_URL_KLAY}"
